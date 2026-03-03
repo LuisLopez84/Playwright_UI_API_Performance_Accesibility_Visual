@@ -1,0 +1,11 @@
+import { test, expect } from '@playwright/test';
+
+test('homepage visual test', async ({ page }) => {
+
+  await page.goto('/');
+  await expect(page).toHaveScreenshot('homepage.png', {
+    fullPage: true,
+    animations: 'disabled'
+  });
+
+});

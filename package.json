@@ -1,0 +1,17 @@
+{
+  "name": "playwright-enterprise-template",
+  "version": "1.0.0",
+  "scripts": {
+    "bdd": "npx playwright-bdd",
+    "test": "npm run bdd && playwright test",
+    "test:smoke": "npm run bdd && playwright test --grep @smoke",
+    "report": "playwright show-report"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.8.2",
+    "@cucumber/cucumber": "^12.6.0",
+    "@playwright/test": "^1.42.0",
+    "playwright-bdd": "^8.4.2",
+    "typescript": "^5.0.0"
+  }
+}
