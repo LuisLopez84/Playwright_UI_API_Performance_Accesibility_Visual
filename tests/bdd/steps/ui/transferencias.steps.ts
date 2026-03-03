@@ -44,14 +44,6 @@ When(
 );
 
 When(
-  'seleciono cuenta Destino {string}',
-  async ({ page }, destino) => {
-    await page.locator('#destination-own-account')
-      .selectOption({ label: destino });
-  }
-);
-
-When(
   'agrego monto {string} descripción {string}',
   async ({ page }, monto, descripción) => {
     await page.fill('#transfer-amount', monto);

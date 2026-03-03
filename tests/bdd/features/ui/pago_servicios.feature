@@ -9,5 +9,5 @@ Feature: Pago de Servicios
     Then debería visualizar el mensaje "¡Pago Finalizado!"
 
     Examples:
-      | servicio    | valor | cuenta                                   |
-      | Agua - AySA | 50000 | Tarjeta de Crédito - **** **** **** 9012 |
+      | servicio    | valor | cuenta                               |
+      | Agua - AySA | 50000 | Caja de Ahorro - **** **** **** 5678 |

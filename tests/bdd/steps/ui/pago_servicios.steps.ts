@@ -21,7 +21,7 @@ When(
       .fill(valor);
 
     await page.locator('#service-account')
-      .selectOption({ index: 2 });
+      .selectOption({ index: 1 });
   }
 );
 
