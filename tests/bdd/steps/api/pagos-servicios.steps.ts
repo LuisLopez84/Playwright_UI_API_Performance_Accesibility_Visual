@@ -7,6 +7,10 @@ When(
     const start = Date.now();
 
     const response = await request.post('/pagos/servicios', {
+      headers: {
+        accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
       data: {
         id_cuenta: cuenta,
         id_servicio: 'SRV001',
@@ -24,5 +28,29 @@ When(
 );
 
 Then('la respuesta debe indicar pago exitoso', async ({ apiContext }) => {
-  expect(apiContext.body.success).toBe(true);
+
+  const body = apiContext.body;
+
+  // Status lógico
+  expect(body.exito).toBe(true);
+  expect(body.error).toBeNull();
+
+  // Contract validation
+  expect(body).toHaveProperty('mensaje');
+  expect(body).toHaveProperty('comprobante');
+
+  // Structure validation
+  const comprobante = body.comprobante;
+
+  expect(comprobante).toHaveProperty('id');
+  expect(comprobante).toHaveProperty('servicio');
+  expect(comprobante).toHaveProperty('empresa');
+  expect(comprobante).toHaveProperty('monto');
+  expect(comprobante).toHaveProperty('fecha');
+  expect(comprobante).toHaveProperty('cuenta');
+
+  // Type validation
+  expect(typeof comprobante.id).toBe('string');
+  expect(typeof comprobante.monto).toBe('number');
+
 });

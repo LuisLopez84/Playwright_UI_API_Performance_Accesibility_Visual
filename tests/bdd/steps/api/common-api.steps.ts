@@ -8,7 +8,10 @@ When('consulto el endpoint {string}', async ({ request, apiContext }, endpoint) 
 
   const start = Date.now();
 
-  const response = await request.get(endpoint);
+  const response = await request.get(endpoint, {
+    headers: { accept: 'application/json' }
+  });
+
   const duration = Date.now() - start;
   const body = await response.json();
 

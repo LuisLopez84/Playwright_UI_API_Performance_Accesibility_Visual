@@ -10,15 +10,22 @@ When(
 
     const start = Date.now();
 
-    const response = await request.post('/transferencias', {
+    const response = await request.post('/transferencias/', {
+      headers: {
+        accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
       data: {
-        fromAccount: origen,
-        toAccount: destino,
-        amount: Number(monto)
+        cuenta_destino: destino,
+        cuenta_origen: origen,
+        monto: Number(monto),
+        motivo: 'Varios',
+        tipo: 'propia'
       }
     });
 
     const duration = Date.now() - start;
+
     const body = await response.json();
 
     apiContext.response = response;
