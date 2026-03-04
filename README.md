@@ -1,377 +1,468 @@
-```
-# 🏦 Playwright Enterprise Testing Framework
+**# 🏦 Playwright Enterprise Testing Framework**
 
 Framework de automatización E2E construido con:
 
-✅ Playwright  
-✅ BDD con Cucumber  
-✅ Testing API  
-✅ Performance Testing  
-✅ Visual Testing  
-✅ Accessibility Testing  
-✅ Multi-browser (Chromium, Firefox, WebKit)  
-✅ GitHub Actions CI/CD  
+✅ Playwright
+
+✅ BDD con Cucumber
+
+✅ Testing API
+
+✅ Performance Testing
+
+✅ Visual Testing
+
+✅ Accessibility Testing
+
+✅ Multi-browser (Chromium, Firefox, WebKit)
+
+✅ GitHub Actions CI/CD
 
 Este proyecto está diseñado para que testers funcionales puedan comenzar a automatizar sin ser desarrolladores expertos.
 
 ---
 
-## 📦 1. Requisitos Previos
+**## 📦 1. Requisitos Previos**
 
 ### 🔹 Windows / Mac / Linux
 
 Necesitas instalar:
 
-#### 1️⃣ Node.js (obligatorio)
+#### **1️****⃣**** Node.js (obligatorio)**
 
-Descargar desde: [https://nodejs.org](https://nodejs.org)  
-Instalar versión recomendada: **Node 18 o 20 LTS**
+Descargar desde: [https://nodejs.org](https://nodejs.org)
+
+Instalar versión recomendada: \*\*Node 18 o 20 LTS\*\*
 
 Verificar instalación:
-```bash
-node -v
-npm -v
-```
 
-#### 2️⃣ Git (opcional pero recomendado)
+\`\`\`bash
+
+node -v
+
+npm -v
+
+**#### 2️****⃣**** Git (opcional pero recomendado)**
 
 Descargar desde: [https://git-scm.com](https://git-scm.com/)
+
 Verificar:
 
-**bash**
+\*\*bash\*\*
 
-```
+\`\`\`
+
 git --version
-```
 
-#### 3️⃣ IntelliJ IDEA (Community)
+\`\`\`
+
+**#### 3️****⃣**** IntelliJ IDEA (Community)**
 
 Descargar: [https://www.jetbrains.com/idea/](https://www.jetbrains.com/idea/)
 
 Plugins recomendados dentro de IntelliJ:
 
-* Cucumber for JavaScript
-* Gherkin
-* Node.js
+\* Cucumber for JavaScript
+
+\* Gherkin
+
+\* Node.js
 
 ---
 
-## 🚀 2. Cómo Clonar el Proyecto
+**## 🚀 2. Cómo Clonar el Proyecto**
 
-**bash**
+\*\*bash\*\*
 
-```
-git clone <URL_DEL_REPO>
+\`\`\`
+
+git clone <URL\_DEL\_REPO>
+
 cd <nombre-del-proyecto>
-```
+
+\`\`\`
 
 O descargar ZIP desde GitHub.
 
 ---
 
-## 📥 3. Instalación del Proyecto (MUY IMPORTANTE)
+**## 📥 3. Instalación del Proyecto (MUY IMPORTANTE)**
 
 Desde la terminal integrada de IntelliJ:
-`View → Tool Windows → Terminal`
+
+\`View → Tool Windows → Terminal\`
 
 Ejecutar:
 
-**bash**
+\*\*bash\*\*
 
-```
+\`\`\`
+
 npm install
-```
+
+\`\`\`
 
 Esto instala todas las dependencias del proyecto.
 
 ---
 
-## 🌐 4. Instalar Navegadores de Playwright
+**## 🌐 4. Instalar Navegadores de Playwright**
 
-**Obligatorio la primera vez:**
+\*\*Obligatorio la primera vez:\*\*
 
-**bash**
+\*\*bash\*\*
 
-```
+\`\`\`
+
 npx playwright install --with-deps
-```
+
+\`\`\`
 
 Esto instala:
 
-* Chromium
-* Firefox
-* WebKit
+\* Chromium
+
+\* Firefox
+
+\* WebKit
 
 ---
 
-## 🥒 5. ¿Cómo funciona Cucumber en este proyecto?
+**## 🥒 5. ¿Cómo funciona Cucumber en este proyecto?**
 
 Este proyecto usa:
 
-* `playwright-bdd`
-* `@cucumber/cucumber`
+\* \`playwright-bdd\`
+
+\* \`@cucumber/cucumber\`
 
 Si necesitas instalarlos manualmente:
 
-**bash**
+\*\*bash\*\*
 
-```
+\`\`\`
+
 npm install -D @cucumber/cucumber playwright-bdd
-```
+
+\`\`\`
 
 O también:
 
-**bash**
+\*\*bash\*\*
 
-```
+\`\`\`
+
 npm install @cucumber/cucumber ts-node --save-dev
-```
+
+\`\`\`
 
 ---
 
-## 🧠 6. Comandos Importantes (Explicados Fácil)
+**## 🧠 6. Comandos Importantes (Explicados Fácil)**
 
 Aquí explico uno por uno para qué sirve cada comando.
 
-### 🔹 `npx playwright-bdd`
+**### 🔹 \`npx playwright-bdd\`**
 
-Genera los archivos internos desde los `.feature`.
+Genera los archivos internos desde los \`.feature\`.
+
 Convierte BDD → tests ejecutables.
+
 Se usa cuando:
 
-* Creas un nuevo feature
-* Agregas nuevos steps
+\* Creas un nuevo feature
 
-### 🔹 `npx bddgen`
+\* Agregas nuevos steps
 
-Hace lo mismo que el anterior (genera `.features-gen`).
+**### 🔹 \`npx bddgen\`**
 
-### 🔹 `npx playwright test`
+Hace lo mismo que el anterior (genera \`.features-gen\`).
 
-Ejecuta **TODOS** los tests del proyecto:
+**### 🔹 \`npx playwright test\`**
 
-* UI
-* API
-* Performance
-* Visual
-* Accessibility
-* Todos los navegadores
+Ejecuta \*\*TODOS\*\* los tests del proyecto:
 
-### 🔹 `npx playwright show-report`
+\* UI
+
+\* API
+
+\* Performance
+
+\* Visual
+
+\* Accessibility
+
+\* Todos los navegadores
+
+**### 🔹 \`npx playwright show-report\`**
 
 Abre el reporte HTML en el navegador.
 
-### 🔹 `npx playwright test --project=bdd-ui`
+**### 🔹 \`npx playwright test --project=bdd-ui\`**
 
-Ejecuta **SOLO** pruebas BDD de UI.
+Ejecuta \*\*SOLO\*\* pruebas BDD de UI.
 
-### 🔹 `npx playwright test --project=bdd-api`
+**### 🔹 \`npx playwright test --project=bdd-api\`**
 
-Ejecuta **SOLO** pruebas API.
+Ejecuta \*\*SOLO\*\* pruebas API.
 
-### 🔹 `npx playwright test --project=ui-chromium`
+**### 🔹 \`npx playwright test --project=ui-chromium\`**
 
 Ejecuta solo UI en Chromium.
 
-### 🔹 `npx playwright test --project=ui-chromium --headed --debug`
+**### 🔹 \`npx playwright test --project=ui-chromium --headed --debug\`**
 
 Ejecuta UI:
 
-* Con navegador visible
-* Modo debug paso a paso
-* Perfecto para aprender.
+\* Con navegador visible
 
-### 🔹 `npx playwright test --project=performance`
+\* Modo debug paso a paso
+
+\* Perfecto para aprender.
+
+**### 🔹 \`npx playwright test --project=performance\`**
 
 Ejecuta solo pruebas de performance.
 
-### 🔹 `npx playwright test --project=visual`
+**### 🔹 \`npx playwright test --project=visual\`**
 
 Ejecuta pruebas visuales (comparación de imágenes).
 
-### 🔹 `npx playwright test --project=accessibility`
+**### 🔹 \`npx playwright test --project=accessibility\`**
 
 Ejecuta pruebas de accesibilidad (WCAG).
 
+
+**### 🔹 \`Ejecución selectiva:`****
+
+npx playwright test
+--project=bdd-ui-chromium
+--project=bdd-ui-firefox
+--project=bdd-ui-webkit
+--project=bdd-api
+--project=performance
+--project=visual
+
+Ejecuta todo menos accesibilidad.
+
 ---
 
-## 🧹 7. Comandos de Limpieza
+**## 🧹 7. Comandos de Limpieza**
 
-### 🔹 `rm -r .features-gen`
+**### 🔹 \`rm -r .features-gen\`**
 
 Elimina archivos generados por BDD.
 
 En Windows usar:
 
-**cmd**
+\*\*cmd\*\*
 
-```
+\`\`\`
+
 rmdir /s /q .features-gen
-```
 
-### 🔹 `rm -r playwright-report`
+\`\`\`
+
+**### 🔹 \`rm -r playwright-report\`**
 
 Elimina reporte HTML anterior.
 
 Windows:
 
-**cmd**
+\*\*cmd\*\*
 
-```
-rmdir /s /q playwright-report
-```
+\`\`\`
 
-### 🔹 `rm -r test-results`
+**rmdir /s /q playwright-report**
+
+\`\`\`
+
+### 🔹 \`rm -r test-results\`
 
 Elimina resultados anteriores.
 
 Windows:
 
-**cmd**
+\*\*cmd\*\*
 
-```
+\`\`\`
+
 rmdir /s /q test-results
-```
+
+\`\`\`
 
 ---
 
-## 🎥 8. ¿Dónde Ver Videos y Evidencias?
+**## 🎥 8. ¿Dónde Ver Videos y Evidencias?**
 
 Después de ejecutar:
 
-**bash**
+\*\*bash\*\*
 
-```
+\`\`\`
+
 npx playwright test
-```
+
+\`\`\`
 
 Se generan:
 
-* `test-results/` → videos y screenshots
-* `playwright-report/` → reporte HTML
+\* \`test-results/\` → videos y screenshots
+
+\* \`playwright-report/\` → reporte HTML
 
 Abrir:
 
-**bash**
+\*\*bash\*\*
 
-```
+\`\`\`
+
 npx playwright show-report
-```
+
+\`\`\`
 
 ---
 
-## 🧪 9. Tipos de Pruebas Incluidas
+**## 🧪 9. Tipos de Pruebas Incluidas**
 
-✅ **UI Testing**
+✅ \*\*UI Testing\*\*
+
 Automatiza el comportamiento del usuario en la aplicación.
 
-✅ **API Testing**
+✅ \*\*API Testing\*\*
+
 Valida servicios REST.
 
-✅ **Performance**
+✅ \*\*Performance\*\*
+
 Valida tiempos de carga y métricas básicas.
 
-✅ **Visual Testing**
+✅ \*\*Visual Testing\*\*
+
 Compara pantallas con imágenes base.
 
-✅ **Accessibility**
+✅ \*\*Accessibility\*\*
+
 Valida reglas WCAG con Axe.
 
 ---
 
-## 🌍 10. Soporte Multi-Browser
+**## 🌍 10. Soporte Multi-Browser**
 
 El proyecto ejecuta en:
 
-* Chromium
-* Firefox
-* WebKit (Safari)
+\* Chromium
+
+\* Firefox
+
+\* WebKit (Safari)
 
 No necesitas configurar nada adicional.
 
 ---
 
-## 🤖 11. Integración CI/CD
+**## 🤖 11. Integración CI/CD**
 
 Este proyecto incluye:
 
-* GitHub Actions
-* Se ejecuta automáticamente cuando se hace `push` a `master`
+\* GitHub Actions
+
+\* Se ejecuta automáticamente cuando se hace \`push\` a \`master\`
 
 ---
 
-## 🧩 12. Flujo Básico para Testers Funcionales
+**## 🧩 12. Flujo Básico para Testers Funcionales**
 
-1. Crear archivo `.feature`
+1. Crear archivo \`.feature\`
 2. Escribir escenarios en lenguaje Gherkin
-3. Crear steps en `steps/`
+3. Crear steps en \`steps/\`
 4. Ejecutar:
-   **bash**
 
-   ```
+   \*\*bash\*\*
+
+   \`\`\`
+
    npx playwright-bdd
-   npx playwright test
-   ```
-5. Ver reporte:
-   **bash**
 
-   ```
+   npx playwright test
+
+   \`\`\`
+5. Ver reporte:
+
+   \*\*bash\*\*
+
+   \`\`\`
+
    npx playwright show-report
-   ```
+
+   \`\`\`
 
 ---
 
-## 🆘 13. Problemas Comunes
+**## 🆘 13. Problemas Comunes**
 
 ### ❌ Error: browsers not installed
 
-**Solución:**
+\*\*Solución:\*\*
 
-**bash**
+\*\*bash\*\*
 
-```
+\`\`\`
+
 npx playwright install
-```
 
-### ❌ Tests duplicados
+\`\`\`
 
-**Solución:**
-Revisar configuración de `projects` en `playwright.config.ts`.
+**### ❌ Tests duplicados**
 
-### ❌ No se genera video
+\*\*Solución:\*\*
 
-**Solución:**
+Revisar configuración de \`projects\` en \`playwright.config.ts\`.
+
+**### ❌ No se genera video**
+
+\*\*Solución:\*\*
+
 Verificar configuración:
 
-**js**
+\*\*js\*\*
 
-```
+\`\`\`
+
 video: 'on'
-```
+
+\`\`\`
 
 ---
 
-## 🎓 14. ¿Qué necesito saber para empezar?
+**## 🎓 14. ¿Qué necesito saber para empezar?**
 
 Solo necesitas:
 
-* Saber escribir escenarios en **Gherkin**
-* Entender pasos **Given / When / Then**
-* Saber ejecutar comandos básicos en terminal
+\* Saber escribir escenarios en \*\*Gherkin\*\*
 
-**NO necesitas saber programación avanzada.**
+\* Entender pasos \*\*Given / When / Then\*\*
+
+\* Saber ejecutar comandos básicos en terminal
+
+\*\*NO necesitas saber programación avanzada.\*\*
 
 ---
 
-## 🏆 Resultado Final
+**## 🏆 Resultado Final**
 
 Este framework permite a testers funcionales:
 
-* Automatizar UI
-* Automatizar APIs
-* Validar performance
-* Validar accesibilidad
-* Ejecutar en múltiples navegadores
-* Integrarse con CI/CD
+\* Automatizar UI
+
+\* Automatizar APIs
+
+\* Validar performance
+
+\* Validar accesibilidad
+
+\* Ejecutar en múltiples navegadores
+
+\* Integrarse con CI/CD
 
 Todo desde un solo proyecto.
