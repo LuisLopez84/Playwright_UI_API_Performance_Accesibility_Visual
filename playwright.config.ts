@@ -1,6 +1,10 @@
 import { defineConfig, devices } from '@playwright/test';
 import { defineBddConfig } from 'playwright-bdd';
+import { config as env } from './tests/config/environment';
 
+// =========================
+// BDD CONFIG
+// =========================
 const bddTestDir = defineBddConfig({
 features: 'tests/bdd/features/**/*.feature',
 steps: [
@@ -12,6 +16,12 @@ steps: [
 export default defineConfig({
 
   outputDir: 'test-results',
+
+use: {
+    trace: 'on',
+    screenshot: 'on',
+    video: 'on'
+  },
 
   reporter: [
     ['list'],
@@ -28,61 +38,95 @@ export default defineConfig({
   expect: {
     timeout: 10000 // 10 segundos por validación (Then)
   },
+    projects: [
 
-  projects: [
-
-    // =========================
-    // SPECS E2E
-    // =========================
-    {
-      name: 'specs-e2e',
-      testDir: 'tests/specs/e2e',
-      use: {
+  // =========================
+  // BDD UI - CHROMIUM
+  // =========================
+  {
+    name: 'bdd-ui-chromium',
+    testDir: bddTestDir,
+    grep: /@UI/,
+    use: {
         ...devices['Desktop Chrome'],
-        baseURL: 'https://homebanking-demo-tests.netlify.app',
-        trace: 'retain-on-failure',
-        screenshot: 'only-on-failure',
-        video: 'on'
+        baseURL: 'https://homebanking-demo-tests.netlify.app'
       }
     },
 
-    // =========================
-    // SPECS API
-    // =========================
-    {
-      name: 'specs-api',
-      testDir: 'tests/specs/api',
-      use: {
-        baseURL: 'https://homebanking-demo.onrender.com'
-      }
-    },
-
-    // =========================
-    // BDD UI
-    // =========================
-    {
-      name: 'bdd-ui',
-      testDir: bddTestDir,
-      grep: /@UI/,
-      use: {
-        ...devices['Desktop Chrome'],
-        baseURL: 'https://homebanking-demo-tests.netlify.app',
-        trace: 'retain-on-failure',
-        screenshot: 'only-on-failure',
-        video: 'on'
-      }
-    },
-
-    // =========================
-    // BDD API
-    // =========================
-    {
-      name: 'bdd-api',
-      testDir: bddTestDir,
-      grep: /@API/,
-      use: {
-        baseURL: 'https://homebanking-demo.onrender.com'
-      }
+// =========================
+  // BDD UI - FIREFOX
+  // =========================
+  {
+    name: 'bdd-ui-firefox',
+    testDir: bddTestDir,
+    grep: /@UI/,
+    use: {
+      ...devices['Desktop Firefox'],
+      browserName: 'firefox',
+      baseURL: 'https://homebanking-demo-tests.netlify.app'
     }
-  ]
+  },
+
+  // =========================
+  // BDD UI - WEBKIT (Safari)
+  // =========================
+  {
+    name: 'bdd-ui-webkit',
+    testDir: bddTestDir,
+    grep: /@UI/,
+    use: {
+      ...devices['Desktop Safari'],
+      browserName: 'webkit',
+      baseURL: 'https://homebanking-demo-tests.netlify.app'
+    }
+  },
+
+  // =========================
+  // BDD API (solo @API)
+  // =========================
+  {
+    name: 'bdd-api',
+    testDir: bddTestDir,
+    grep: /@API/,
+    use: {
+      baseURL: env.apiBaseUrl
+    }
+  },
+
+  // =========================
+  // PERFORMANCE
+  // =========================
+  {
+    name: 'performance',
+    testMatch: 'tests/performance/**/*.spec.ts',
+    use: {
+        ...devices['Desktop Chrome'],
+        baseURL: 'https://homebanking-demo-tests.netlify.app'
+    }
+  },
+
+  // =========================
+  // VISUAL
+  // =========================
+  {
+    name: 'visual',
+    testMatch: 'tests/visual/home.visual.spec.ts',
+    use: {
+        ...devices['Desktop Chrome'],
+        baseURL: 'https://homebanking-demo-tests.netlify.app'
+    }
+  },
+
+  // =========================
+  // ACCESSIBILITY
+  // =========================
+  {
+    name: 'accessibility',
+    testMatch: 'tests/visual/accessibility.spec.ts',
+    use: {
+        ...devices['Desktop Chrome'],
+        baseURL: 'https://homebanking-demo-tests.netlify.app'
+    }
+  }
+]
 });
