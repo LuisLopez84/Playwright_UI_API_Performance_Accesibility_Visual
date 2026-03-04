@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 ```
+=======
+>>>>>>> a348af07c50231236fed3d4c720e3a46b4dd1d2b
 🏦 Playwright Enterprise Testing Framework
 
 Framework de automatización E2E construido con:
@@ -238,4 +241,7 @@ Ejecutar en múltiples navegadores
 Integrarse con CI/CD
 
 Todo desde un solo proyecto.
+<<<<<<< HEAD
 ```
+=======
+>>>>>>> a348af07c50231236fed3d4c720e3a46b4dd1d2b
