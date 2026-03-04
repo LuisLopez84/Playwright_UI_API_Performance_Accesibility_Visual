@@ -1,0 +1,239 @@
+🏦 Playwright Enterprise Testing Framework
+
+Framework de automatización E2E construido con:
+
+✅ Playwright
+✅ BDD con Cucumber
+✅ Testing API
+✅ Performance Testing
+✅ Visual Testing
+✅ Accessibility Testing
+✅ Multi-browser (Chromium, Firefox, WebKit)
+✅ GitHub Actions CI/CD
+
+Este proyecto está diseñado para que testers funcionales puedan comenzar a automatizar sin ser desarrolladores expertos.
+
+📦 1. Requisitos Previos
+🔹 Windows / Mac / Linux
+
+Necesitas instalar:
+1️⃣ Node.js (obligatorio)
+
+Descargar desde:
+https://nodejs.org
+
+Instalar versión recomendada:
+Node 18 o 20 LTS
+
+Verificar instalación:
+node -v
+npm -v
+2️⃣ Git (opcional pero recomendado)
+
+Descargar desde:
+https://git-scm.com
+
+Verificar:
+git --version
+3️⃣ IntelliJ IDEA (Community)
+
+Descargar:
+https://www.jetbrains.com/idea/
+
+Plugins recomendados dentro de IntelliJ:
+Cucumber for JavaScript
+Gherkin
+Node.js
+
+🚀 2. Cómo Clonar el Proyecto
+git clone <URL_DEL_REPO>
+cd <nombre-del-proyecto>
+
+O descargar ZIP desde GitHub.
+
+📥 3. Instalación del Proyecto (MUY IMPORTANTE)
+Desde la terminal integrada de IntelliJ:
+View → Tool Windows → Terminal
+
+Ejecutar:
+npm install
+
+Esto instala todas las dependencias del proyecto.
+
+🌐 4. Instalar Navegadores de Playwright
+Obligatorio la primera vez:
+npx playwright install --with-deps
+
+Esto instala:
+Chromium
+Firefox
+WebKit
+
+🥒 5. ¿Cómo funciona Cucumber en este proyecto?
+Este proyecto usa:
+playwright-bdd
+@cucumber/cucumber
+
+Si necesitas instalarlos manualmente:
+npm install -D @cucumber/cucumber playwright-bdd
+O también:
+
+npm install @cucumber/cucumber ts-node --save-dev
+
+🧠 6. Comandos Importantes (Explicados Fácil)
+Aquí explico uno por uno para qué sirve cada comando.
+
+🔹 npx playwright-bdd
+Genera los archivos internos desde los .feature.
+Convierte BDD → tests ejecutables.
+Se usa cuando:
+Creas un nuevo feature
+Agregas nuevos steps
+
+🔹 npx bddgen
+Hace lo mismo que el anterior (genera .features-gen).
+
+🔹 npx playwright test
+Ejecuta TODOS los tests del proyecto:
+UI
+API
+Performance
+Visual
+Accessibility
+Todos los navegadores
+
+🔹 npx playwright show-report
+Abre el reporte HTML en el navegador.
+
+🔹 npx playwright test --project=bdd-ui
+Ejecuta SOLO pruebas BDD de UI.
+
+🔹 npx playwright test --project=bdd-api
+Ejecuta SOLO pruebas API.
+
+🔹 npx playwright test --project=ui-chromium
+Ejecuta solo UI en Chromium.
+
+🔹 npx playwright test --project=ui-chromium --headed --debug
+Ejecuta UI:
+Con navegador visible
+Modo debug paso a paso
+Perfecto para aprender.
+
+🔹 npx playwright test --project=performance
+Ejecuta solo pruebas de performance.
+
+🔹 npx playwright test --project=visual
+Ejecuta pruebas visuales (comparación de imágenes).
+
+🔹 npx playwright test --project=accessibility
+Ejecuta pruebas de accesibilidad (WCAG).
+
+🧹 7. Comandos de Limpieza
+🔹 rm -r .features-gen
+Elimina archivos generados por BDD.
+
+En Windows usar:
+rmdir /s /q .features-gen
+🔹 rm -r playwright-report
+
+Elimina reporte HTML anterior.
+Windows:
+
+rmdir /s /q playwright-report
+🔹 rm -r test-results
+
+Elimina resultados anteriores.
+Windows:
+
+rmdir /s /q test-results
+🎥 8. ¿Dónde Ver Videos y Evidencias?
+
+Después de ejecutar:
+npx playwright test
+
+Se generan:
+
+test-results/ → videos y screenshots
+playwright-report/ → reporte HTML
+
+Abrir:
+npx playwright show-report
+
+🧪 9. Tipos de Pruebas Incluidas
+✅ UI Testing
+Automatiza el comportamiento del usuario en la aplicación.
+
+✅ API Testing
+Valida servicios REST.
+
+✅ Performance
+Valida tiempos de carga y métricas básicas.
+
+✅ Visual Testing
+Compara pantallas con imágenes base.
+
+✅ Accessibility
+Valida reglas WCAG con Axe.
+
+🌍 10. Soporte Multi-Browser
+El proyecto ejecuta en:
+
+Chromium
+Firefox
+WebKit (Safari)
+
+No necesitas configurar nada adicional.
+
+🤖 11. Integración CI/CD
+Este proyecto incluye:
+GitHub Actions
+Se ejecuta automáticamente cuando se hace:
+push a master
+
+🧩 12. Flujo Básico para Testers Funcionales
+Crear archivo .feature
+Escribir escenarios en lenguaje Gherkin
+Crear steps en steps/
+
+Ejecutar:
+
+npx playwright-bdd
+npx playwright test
+
+Ver reporte:
+
+npx playwright show-report
+
+🆘 13. Problemas Comunes
+❌ Error: browsers not installed
+
+Solución:
+
+npx playwright install
+❌ Tests duplicados
+
+Revisar configuración de projects en playwright.config.ts.
+
+❌ No se genera video
+Verificar configuración:
+
+video: 'on'
+🎓 14. ¿Qué necesito saber para empezar?
+
+Solo necesitas:
+Saber escribir escenarios en Gherkin
+Entender pasos Given / When / Then
+Saber ejecutar comandos básicos en terminal
+NO necesitas saber programación avanzada.
+
+🏆 Resultado Final
+Este framework permite a testers funcionales:
+Automatizar UI
+Automatizar APIs
+Validar performance
+Validar accesibilidad
+Ejecutar en múltiples navegadores
+Integrarse con CI/CD
+
+Todo desde un solo proyecto.
