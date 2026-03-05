@@ -9,36 +9,34 @@ jobs:
   test:
     name: Run Playwright Tests
     runs-on: ubuntu-latest
-
     timeout-minutes: 30
 
     steps:
-      # =========================
+
       # Checkout repository
-      # =========================
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # =========================
       # Setup Node
-      # =========================
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'npm'
 
-      # =========================
       # Install dependencies
-      # =========================
       - name: Install dependencies
         run: npm ci
 
-      # =========================
-      # Install Playwright Browsers
-      # =========================
+      # Install Playwright browsers
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
+
+      # =========================
+      # Generate BDD tests
+      # =========================
+      - name: Generate BDD tests
+        run: npx playwright-bdd
 
       # =========================
       # Run tests
@@ -46,9 +44,7 @@ jobs:
       - name: Run Playwright tests
         run: npx playwright test || true
 
-      # =========================
       # Upload HTML Report
-      # =========================
       - name: Upload Playwright HTML Report
         if: always()
         uses: actions/upload-artifact@v4
@@ -57,9 +53,7 @@ jobs:
           path: playwright-report
           retention-days: 7
 
-      # =========================
       # Upload Test Results
-      # =========================
       - name: Upload Test Results
         if: always()
         uses: actions/upload-artifact@v4
